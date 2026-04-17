@@ -55,7 +55,7 @@ if (heroTitle && heroSubtitle) {
 
     const titleLen = heroTitle.querySelectorAll('.title-char').length;
     const totalTitleMs = Math.max(0, (titleLen - 1) * staggerMs + durMs);
-    const gapMs = 20;
+    const gapMs = 0;
 
     const subtitleChars = [...subtitleText];
     let subtitleRevealLen = 0;
