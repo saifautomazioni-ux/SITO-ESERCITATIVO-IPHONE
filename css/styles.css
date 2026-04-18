@@ -55,40 +55,63 @@
     font-size: 1.05rem;
 }
 
-.premium-showcase .design-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 36px;
-    padding-bottom: 32px;
+.premium-showcase .premium-heading.center {
+    text-align: left;
+    max-width: 720px;
+    margin-left: 0;
+    margin-right: auto;
 }
 
-.premium-showcase .design-iphone {
-    display: block;
+.premium-showcase .premium-eyebrow {
+    color: #6b6b6b;
+}
+
+.premium-showcase .premium-heading h2 {
+    color: #1a1a1a;
+    font-size: clamp(3rem, 6.5vw, 5rem);
+    margin: 0 0 8px;
+}
+
+.premium-showcase .premium-subtitle {
+    color: #6b6b6b;
+    margin-top: 6px;
+    font-size: 1.05rem;
+}
+
+/* Top area: two-column layout (text left, image right) */
+.premium-showcase .design-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.premium-showcase .design-left .design-text-area {
+    min-height: 260px;
+}
+
+.premium-showcase .design-right .design-image-slot {
+    min-height: 520px;
     width: 100%;
-    max-width: min(720px, 62vw);
-    height: auto;
-    margin: 0 auto;
     background: transparent;
-    filter: none;
-    opacity: 0;
-    transform: scale(0.995);
-    animation: designImageIn 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    will-change: transform, opacity;
 }
 
-@keyframes designImageIn {
-    from { opacity: 0; transform: scale(0.98); }
-    to { opacity: 1; transform: scale(1); }
+.premium-showcase .design-horizontal-slot {
+    min-height: 260px;
+    margin-top: 56px;
+    background: transparent;
 }
 
-/* Ensure any legacy premium-card styles do not add dark surfaces inside this section */
-.premium-showcase .premium-card,
-.premium-showcase .premium-card-large,
-.premium-showcase .premium-showcase-grid {
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
+@media (max-width: 900px) {
+    .premium-showcase .design-grid {
+        grid-template-columns: 1fr;
+    }
+    .premium-showcase .design-right .design-image-slot,
+    .premium-showcase .design-horizontal-slot {
+        min-height: 360px;
+    }
 }
 
 .premium-container {
