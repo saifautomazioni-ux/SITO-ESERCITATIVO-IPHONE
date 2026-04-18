@@ -45,7 +45,10 @@
 
 .premium-showcase .premium-heading h2 {
     color: #1a1a1a;
-    font-size: clamp(3rem, 6.5vw, 5rem);
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(2.4rem, 5.2vw, 4rem); /* Reduced 20% */
     margin: 0 0 8px;
 }
 
