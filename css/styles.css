@@ -28,6 +28,69 @@
     padding: 110px 0;
 }
 
+/* Design-specific adjustments for the premium-showcase section */
+.premium-showcase {
+    background: #f5f5f7;
+    color: #1a1a1a;
+    padding: 140px 0;
+}
+
+.premium-showcase .premium-heading.center {
+    text-align: center;
+}
+
+.premium-showcase .premium-eyebrow {
+    color: #6b6b6b;
+}
+
+.premium-showcase .premium-heading h2 {
+    color: #1a1a1a;
+    font-size: clamp(3rem, 6.5vw, 5rem);
+    margin: 0 0 8px;
+}
+
+.premium-showcase .premium-subtitle {
+    color: #6b6b6b;
+    margin-top: 6px;
+    font-size: 1.05rem;
+}
+
+.premium-showcase .design-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 36px;
+    padding-bottom: 32px;
+}
+
+.premium-showcase .design-iphone {
+    display: block;
+    width: 100%;
+    max-width: min(720px, 62vw);
+    height: auto;
+    margin: 0 auto;
+    background: transparent;
+    filter: none;
+    opacity: 0;
+    transform: scale(0.995);
+    animation: designImageIn 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes designImageIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Ensure any legacy premium-card styles do not add dark surfaces inside this section */
+.premium-showcase .premium-card,
+.premium-showcase .premium-card-large,
+.premium-showcase .premium-showcase-grid {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
 .premium-container {
     width: var(--premium-container);
     margin: 0 auto;
@@ -289,14 +352,7 @@ nav {
 /* Hero Section - Refined Minimal Apple Style */
 .hero {
     background: #f5f5f7;
-    background-image: 
-        /* Sfumatura laterale sinistra - chiara per light mode */
-        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.02) 20%, transparent 40%),
-        /* Sfumatura laterale destra - chiara per light mode */
-        linear-gradient(270deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.02) 20%, transparent 40%);
-    background-size: 100% 100%;
-    background-position: center, left center, right center;
-    background-attachment: scroll;
+    background-image: none;
     min-height: 100svh;
     display: flex;
     flex-direction: column;
