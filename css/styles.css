@@ -821,6 +821,14 @@ section {
     transform: translateY(0);
 }
 
+/* Disable initial fade for the hero section so the background doesn't show black
+   on first paint. This only affects the `.hero` element with class `reveal`. */
+.hero.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
 /* Ensure full-width sections keep their background visible during reveal
    to avoid a flash from the body's black background when scrolling. */
 .premium-section.reveal,
