@@ -794,3 +794,15 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Ensure full-width sections keep their background visible during reveal
+   to avoid a flash from the body's black background when scrolling. */
+.premium-section.reveal,
+.premium-showcase.reveal,
+.optical-zoom-section.reveal,
+.final-gallery.reveal,
+.section-bento.reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
+}
