@@ -55,7 +55,7 @@ if (heroTitle && heroSubtitle) {
 
     const titleLen = heroTitle.querySelectorAll('.title-char').length;
     const totalTitleMs = Math.max(0, (titleLen - 1) * staggerMs + durMs);
-    const gapMs = 8;
+    const subtitleStartDelay = Math.round(0.8 * totalTitleMs);
 
     const subtitleChars = [...subtitleText];
     let subtitleRevealLen = 0;
@@ -67,7 +67,7 @@ if (heroTitle && heroSubtitle) {
         } else {
             span.className = 'subtitle-char';
             span.style.setProperty('--i', String(subtitleRevealLen));
-            span.style.animationDelay = `${totalTitleMs + gapMs + (subtitleRevealLen * staggerMs)}ms`;
+            span.style.animationDelay = `${subtitleStartDelay + (subtitleRevealLen * staggerMs)}ms`;
             span.textContent = char;
             subtitleRevealLen += 1;
         }

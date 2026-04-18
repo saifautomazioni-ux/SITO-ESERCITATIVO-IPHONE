@@ -288,7 +288,15 @@ nav {
 
 /* Hero Section - Refined Minimal Apple Style */
 .hero {
-    background: #000;
+    background: #f5f5f7;
+    background-image: 
+        /* Sfumatura laterale sinistra - chiara per light mode */
+        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.02) 20%, transparent 40%),
+        /* Sfumatura laterale destra - chiara per light mode */
+        linear-gradient(270deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.02) 20%, transparent 40%);
+    background-size: 100% 100%;
+    background-position: center, left center, right center;
+    background-attachment: scroll;
     min-height: 100svh;
     display: flex;
     flex-direction: column;
@@ -304,7 +312,7 @@ nav {
 }
 
 .hero-title-premium {
-    color: #fff;
+    color: #1a1a1a;
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-size: clamp(calc(42px * var(--hero-scale)), calc(8vw * var(--hero-scale)), calc(120px * var(--hero-scale)));
@@ -315,7 +323,7 @@ nav {
     text-transform: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    text-shadow: none;
     will-change: auto;
     --reveal-dur: 1400ms;
     --reveal-stagger: 0.102s;
@@ -350,14 +358,14 @@ nav {
 }
 
 .hero-subtitle-premium {
-    color: #86868b;
+    color: #424245;
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     font-size: clamp(calc(18px * var(--hero-scale)), calc(2.5vw * var(--hero-scale)), calc(28px * var(--hero-scale)));
     font-weight: 400;
     letter-spacing: 0.01em;
     text-align: center;
     margin: 0 0 clamp(calc(24px * var(--hero-scale)), calc(5vh * var(--hero-scale)), calc(48px * var(--hero-scale)));
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .hero-subtitle-premium .subtitle-char {
@@ -376,18 +384,53 @@ nav {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .hero-scroll-label {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
 .hero-scroll-indicator {
     position: absolute;
     left: 50%;
     bottom: calc(22px + var(--hero-vshift, 0px));
     transform: translateX(-50%);
     width: calc(54px * var(--hero-scale));
-    height: calc(54px * var(--hero-scale));
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: calc(8px * var(--hero-scale));
     pointer-events: none;
-    opacity: 0.75;
+}
+
+.hero-scroll-label {
+    display: block;
+    font-size: calc(13px * var(--hero-scale));
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #424245;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    text-shadow: none;
+    animation: heroScrollLabelFadeIn 1.6s ease-out forwards;
+    animation-delay: 1.2s;
+    will-change: opacity, transform;
+}
+
+@keyframes heroScrollLabelFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-scroll-pill {
@@ -397,8 +440,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(245, 245, 247, 0.32);
-    background: rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(26, 26, 26, 0.25);
+    background: rgba(26, 26, 26, 0.08);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     animation: heroScrollHint 1.9s ease-in-out infinite;
@@ -411,7 +454,7 @@ nav {
 
 .hero-scroll-arrow {
     display: inline-block;
-    color: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
     font-size: calc(18px * var(--hero-scale));
     line-height: 1;
     transform: translateY(-1px);
@@ -431,67 +474,50 @@ nav {
     overflow: hidden;
     will-change: transform;
     animation: heroFloat 5.2s ease-in-out infinite;
-    background: none;
+    background: transparent;
     border: 0;
     box-shadow: none;
     padding: 0;
     outline: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 28%, rgba(0,0,0,0.92) 48%, rgba(0,0,0,0.45) 68%, rgba(0,0,0,0) 84%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 28%, rgba(0,0,0,0.92) 48%, rgba(0,0,0,0.45) 68%, rgba(0,0,0,0) 84%);
+    mask-image: none;
+    -webkit-mask-image: none;
 }
 
 .hero-img-premium {
+    position: relative;
+    z-index: 10;
     display: block;
-    max-width: min(calc(94vw * var(--hero-scale)), calc(1300px * var(--hero-scale)));
-    max-height: min(calc(80vh * var(--hero-scale)), calc(1100px * var(--hero-scale)));
+    max-width: min(calc(94vw * var(--hero-scale) * 0.8), calc(1300px * var(--hero-scale) * 0.8));
+    max-height: min(calc(80vh * var(--hero-scale) * 0.8), calc(1100px * var(--hero-scale) * 0.8));
     width: auto;
     height: auto;
     margin: 0 auto;
     object-fit: contain;
     user-select: none;
     -webkit-user-drag: none;
-    background: none;
+    background: transparent;
     border: 0;
     box-shadow: none;
     outline: none;
     mix-blend-mode: normal;
-    filter: contrast(1.14) brightness(1.01);
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.96) 48%, rgba(0,0,0,0.55) 66%, rgba(0,0,0,0) 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.96) 48%, rgba(0,0,0,0.55) 66%, rgba(0,0,0,0) 80%);
+    filter: none;
+    mask-image: none;
+    -webkit-mask-image: none;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    transition: transform 0.4s cubic-bezier(0.1, 0, 0.2, 1), filter 0.4s ease-out;
+    transition: transform 0.4s cubic-bezier(0.1, 0, 0.2, 1);
     transform-style: preserve-3d;
-    will-change: transform, filter;
+    will-change: transform;
 }
 
 .hero-shine {
-    position: absolute;
-    inset: -15%;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 20;
-    mix-blend-mode: overlay;
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 0.2s ease-out;
-    transform: translateZ(80px);
+    display: none;
 }
 
 .hero-smoke-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.07) 24%, rgba(255,255,255,0) 58%);
-    pointer-events: none;
-    z-index: 25;
-    mix-blend-mode: screen;
-    opacity: 0.46;
-    filter: blur(24px);
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.98) 52%, rgba(0,0,0,0) 76%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.98) 52%, rgba(0,0,0,0) 76%);
-    transform: translateZ(80px);
-    animation: smokeDrift 6s ease-in-out infinite;
+    display: none;
 }
 
 @keyframes smokeDrift {
@@ -523,8 +549,8 @@ nav {
         padding: 24px 12px;
     }
     .hero-img-premium {
-        max-width: 96vw;
-        max-height: 65vh;
+        max-width: calc(96vw * 0.8);
+        max-height: calc(65vh * 0.8);
     }
 }
 
