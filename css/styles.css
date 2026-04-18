@@ -32,7 +32,13 @@
 .premium-showcase {
     background: #f5f5f7;
     color: #1a1a1a;
-    padding: 140px 0;
+    --hero-pad: clamp(24px, 6vw, 64px);
+    --hero-vshift: 34px;
+    --hero-scale: 0.81;
+    padding: var(--hero-pad) 16px;
+    padding-top: calc(var(--hero-pad) - var(--hero-vshift));
+    padding-bottom: calc(var(--hero-pad) + var(--hero-vshift));
+    min-height: 100svh;
 }
 
 .premium-showcase .premium-heading.center {
@@ -86,35 +92,37 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
-    align-items: start;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .premium-showcase .design-left .design-text-area {
-    min-height: 260px;
+    min-height: 180px;
 }
 
 .premium-showcase .design-right .design-image-slot {
-    min-height: 520px;
+    min-height: auto;
     width: 100%;
     background: transparent;
+    max-height: calc(68vh);
+    overflow: hidden;
 }
 
 .premium-showcase .design-horizontal-slot {
-    min-height: 260px;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    min-height: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
-    padding: 56px 0;
+    padding: 24px 0;
 }
 
 .premium-showcase .design-horizontal-slot .design-horizontal-img {
     display: block;
-    width: 96%;
+    width: 67%; /* ~30% smaller than previous 96% */
     max-width: calc(var(--premium-container) + 160px);
     height: auto;
     margin: 0 auto;
@@ -141,7 +149,7 @@
     }
     .premium-showcase .design-right .design-image-slot,
     .premium-showcase .design-horizontal-slot {
-        min-height: 360px;
+        min-height: 260px;
     }
 }
 
