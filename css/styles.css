@@ -103,8 +103,36 @@
 
 .premium-showcase .design-horizontal-slot {
     min-height: 260px;
-    margin-top: 56px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: transparent;
+    padding: 56px 0;
+}
+
+.premium-showcase .design-horizontal-slot .design-horizontal-img {
+    display: block;
+    width: 96%;
+    max-width: calc(var(--premium-container) + 160px);
+    height: auto;
+    margin: 0 auto;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+@media (max-width: 900px) {
+    .premium-showcase .design-horizontal-slot {
+        padding: 40px 0;
+        margin-top: 48px;
+        margin-bottom: 48px;
+    }
+    .premium-showcase .design-horizontal-slot .design-horizontal-img {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 900px) {
