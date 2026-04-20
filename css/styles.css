@@ -28,127 +28,117 @@
     padding: 110px 0;
 }
 
-/* Design-specific adjustments for the premium-showcase section */
+/* ─── SEZIONE DESIGN ──────────────────────────────────────── */
 .premium-showcase {
     background: #f5f5f7;
     color: #1a1a1a;
-    padding: 48px 16px;
-    padding-top: 28px;
-    padding-bottom: 40px;
-    min-height: auto;
+    padding: 96px 0 112px;
 }
 
-.premium-showcase .premium-heading.center {
-    text-align: center;
-}
-
-.premium-showcase .premium-eyebrow {
-    color: #6b6b6b;
-}
-
-.premium-showcase .premium-heading h2 {
-    color: #1a1a1a;
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    font-size: clamp(2.4rem, 5.2vw, 4rem); /* Reduced 20% */
-    margin: 0 0 8px;
-}
-
-.premium-showcase .premium-subtitle {
-    color: #6b6b6b;
-    margin-top: 6px;
-    font-size: 1.05rem;
-}
-
-.premium-showcase .premium-heading.center {
-    text-align: left;
-    max-width: 720px;
-    margin-left: 0;
-    margin-right: auto;
-}
-
-.premium-showcase .premium-eyebrow {
-    color: #6b6b6b;
-}
-
-.premium-showcase .premium-heading h2 {
-    color: #1a1a1a;
-    font-size: clamp(3rem, 6.5vw, 5rem);
-    margin: 0 0 8px;
-}
-
-.premium-showcase .premium-subtitle {
-    color: #6b6b6b;
-    margin-top: 6px;
-    font-size: 1.05rem;
-}
-
-/* Top area: two-column layout (text left, image right) */
 .premium-showcase .design-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "header  iphones"
+        "captions duo";
+    column-gap: 80px;
+    row-gap: 72px;
 }
 
-.premium-showcase .design-left .design-text-area {
-    min-height: 120px;
+/* Riga 1 sinistra */
+.design-header {
+    grid-area: header;
+    align-self: start;
 }
 
-.premium-showcase .design-right .design-image-slot {
-    min-height: auto;
-    width: 100%;
-    background: transparent;
-    max-height: calc(48vh);
-    overflow: hidden;
+.design-title {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #1a1a1a;
+    margin: 0 0 14px;
 }
 
-.premium-showcase .design-horizontal-slot {
-    min-height: auto;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    padding: 12px 0;
+.design-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #4a4a4a;
+    line-height: 1.55;
+    margin: 0;
 }
 
-.premium-showcase .design-horizontal-slot .design-horizontal-img {
+/* Riga 1 destra */
+.design-iphones {
+    grid-area: iphones;
+    align-self: start;
+}
+
+.design-main-img {
     display: block;
-    width: 50%; /* further reduced */
-    max-width: calc(var(--premium-container) + 160px);
-    max-height: 48vh;
+    width: 100%;
     height: auto;
-    margin: 0 auto;
     background: transparent;
     border: 0;
     box-shadow: none;
 }
 
-@media (max-width: 900px) {
-    .premium-showcase .design-horizontal-slot {
-        padding: 40px 0;
-        margin-top: 48px;
-        margin-bottom: 48px;
-    }
-    .premium-showcase .design-horizontal-slot .design-horizontal-img {
-        width: 100%;
-        max-width: 100%;
-    }
+/* Riga 2 sinistra */
+.design-caption-block {
+    grid-area: captions;
+    align-self: start;
 }
 
+.design-caption {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #6b6b6b;
+    line-height: 1.9;
+    margin: 0 0 1.4em;
+}
+.design-caption:last-child { margin-bottom: 0; }
+
+/* Riga 2 destra */
+.design-duo {
+    grid-area: duo;
+    align-self: start;
+    display: flex;
+    gap: 10px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.design-duo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Stagger reveal */
+.design-header.reveal        { transition-delay: 0s;    }
+.design-iphones.reveal       { transition-delay: 0.15s; }
+.design-caption-block.reveal { transition-delay: 0.1s;  }
+.design-duo.reveal           { transition-delay: 0.25s; }
+
 @media (max-width: 900px) {
+    .premium-showcase { padding: 64px 0 80px; }
     .premium-showcase .design-grid {
         grid-template-columns: 1fr;
+        grid-template-areas: "header" "iphones" "captions" "duo";
+        column-gap: 0;
+        row-gap: 36px;
     }
-    .premium-showcase .design-right .design-image-slot,
-    .premium-showcase .design-horizontal-slot {
-        min-height: 200px;
-    }
+    .design-duo { width: 100%; }
+    .design-header.reveal, .design-iphones.reveal,
+    .design-caption-block.reveal, .design-duo.reveal { transition-delay: 0s; }
 }
 
 .premium-container {
@@ -775,7 +765,14 @@ section {
 /* Bento Grid */
 .section-bento {
     flex-direction: column;
-    background: #000;
+    background: #f5f5f7;
+}
+
+.section-bento h2 {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #1a1a1a;
 }
 
 .bento-grid {
